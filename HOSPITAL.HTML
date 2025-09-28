@@ -171,7 +171,72 @@
       text-decoration: none;
       color: #333;
     }
+.feedback-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.feedback-form button {
+  width: 100%;
+  padding: 12px;
+  background: #0052cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.feedback-form button:hover {
+  background: #003d99;
+}
+
+/* Star Rating */
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 1.5em;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffcc00;
+}
+
+.modal { display: none; justify-content: center; align-items: center; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6);}
+.modal:target { display: flex; }
+.modal-content { background: white; padding:30px; border-radius:12px; width: 420px; text-align:center; position:relative; box-shadow:0 6px 12px rgba(0,0,0,0.2);}
+.close { position:absolute; top:10px; right:15px; font-size:1.5em; text-decoration:none; color:#333;}
+
+
   </style>
+
 </head>
 <body>
 
@@ -201,6 +266,27 @@
   </div>
 </div>
 
+<div id="appointmentModal" class="modal">
+  <div class="modal-content">
+    <a href="#" class="close">&times;</a>
+    <h2>Book an Appointment</h2>
+    <form class="appointment-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="date" required>
+      <select required>
+        <option value="">Select Doctor</option>
+        <option>Dr. Smith (General)</option>
+        <option>Dr. Lee (Pediatrics)</option>
+        <option>Dr. Patel (Dentistry)</option>
+        <option>Dr. Kumar (Cardiology)</option>
+      </select>
+      <button type="submit">Confirm Appointment</button>
+    </form>
+  </div>
+</div>
+
+
 <!-- Hero -->
 <div class="hero">
   <div>
@@ -208,7 +294,8 @@
     <p style="font-size: 1.1em; margin-bottom: 25px; color: white;">
         Providing expert care with a compassionate touch. Use our AI assistant for instant support.
     </p>
-    <button onclick="document.getElementById('appointment').scrollIntoView({behavior: 'smooth'})">Book Appointment</button>
+    <a href="#appointmentModal"><button>Book Appointment</button></a>
+
   </div>
 </div>
 
@@ -234,28 +321,35 @@
   </div>
 </section>
 
-<!-- Appointment -->
-<section class="section" id="appointment">
-  <h2>Book an Appointment</h2>
-  <form class="appointment-form">
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="date" required>
-    <select required>
-      <option value="">Select Doctor</option>
-      <option>Dr. Smith (General)</option>
-      <option>Dr. Lee (Pediatrics)</option>
-      <option>Dr. Patel (Dentistry)</option>
-      <option>Dr. Kumar (Cardiology)</option>
-    </select>
-    <button type="submit">Confirm Appointment</button>
-  </form>
+
+<section class="section" id="feedback" style="background: #e6f0ff;">
+  <h2>Feedback</h2>
+  <div class="feedback-form">
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      
+      <label style="display:block; margin: 12px 0; color:#333;">Rate our services:</label>
+      <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+      </div>
+      
+      <textarea placeholder="Write your feedback here..." rows="5" required></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer id="contact-info">
   <p>&copy; 2025 CityCare Hospital. All Rights Reserved.</p>
 </footer>
+
+
 <script>
   window.watsonAssistantChatOptions = {
     integrationID: "ede84544-4ce9-42aa-9dfc-8f156ace7b80", // The ID of this integration.
