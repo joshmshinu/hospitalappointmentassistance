@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityCare Hospital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body { background: #f5f9ff; color: #333; }
+
+    /* Header */
+    header {
+      background: #0052cc;
+      color: white;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.8em; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url("https://joshmshinu.github.io/hospitalphoto/Gemini_Generated_Image_i0yekti0yekti0ye.png") center/cover no-repeat;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+    .hero h2 { font-size: 2.5em; margin-bottom: 15px; }
+    .hero button {
+      background: #ffcc00;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .hero button:hover { background: #e6b800; }
+
+    /* Sections */
+    .section {
+      padding: 60px 15%;
+      text-align: center;
+    }
+    .section h2 {
+      margin-bottom: 40px;
+      font-size: 2em;
+      color: #0052cc;
+    }
+
+    /* Services */
+    .services {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      width: 280px;
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { margin-bottom: 15px; color: #333; }
+    .card p { font-size: 0.95em; color: #555; }
+
+    /* Appointment Form */
+    .appointment-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .appointment-form input, .appointment-form select, .appointment-form button {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    .appointment-form button {
+      background: #0052cc;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .appointment-form button:hover { background: #003d99; }
+
+    /* Footer */
+    footer {
+      background: #003d99;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    /* Modal (CSS only with :target) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal:target {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 320px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .modal-content h2 {
+      margin-bottom: 20px;
+      color: #0052cc;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .modal-content button {
+      width: 100%;
+      padding: 12px;
+      background: #0052cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .modal-content button:hover { background: #003d99; }
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 1.5em;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>CityCare Hospital</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#appointment">Appointments</a>
+    <a href="#contact-info">Contact</a>
+    <a href="#loginModal">Login</a>
+  </nav>
+</header>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <a href="#" class="close">&times;</a>
+    <h2>Login</h2>
+    <form>
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div>
+    <h2>Your Health, Our Priority</h2>
+    <p style="font-size: 1.1em; margin-bottom: 25px; color: white;">
+        Providing expert care with a compassionate touch. Use our AI assistant for instant support.
+    </p>
+    <button onclick="document.getElementById('appointment').scrollIntoView({behavior: 'smooth'})">Book Appointment</button>
+  </div>
+</div>
+
+<!-- About -->
+<section class="section" id="about" style="background: #e6f0ff;">
+    <h2>About CityCare</h2>
+    <p style="max-width: 800px; margin: 0 auto; line-height: 1.6; color: #555;">
+        CityCare Hospital is dedicated to providing high-quality, compassionate care. 
+        Since opening our doors in 2005, we have been a trusted community leader in healthcare, 
+        combining state-of-the-art technology with a human-centered approach. 
+        Our mission is to prioritize your health with expertise and integrity.
+    </p>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="card"><h3>General Medicine</h3><p>Comprehensive care for all age groups.</p></div>
+    <div class="card"><h3>Pediatrics</h3><p>Special care for infants, children & teens.</p></div>
+    <div class="card"><h3>Dental Care</h3><p>Preventive and advanced dental treatments.</p></div>
+    <div class="card"><h3>Cardiology</h3><p>Advanced heart care and diagnostics.</p></div>
+  </div>
+</section>
+
+<!-- Appointment -->
+<section class="section" id="appointment">
+  <h2>Book an Appointment</h2>
+  <form class="appointment-form">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="date" required>
+    <select required>
+      <option value="">Select Doctor</option>
+      <option>Dr. Smith (General)</option>
+      <option>Dr. Lee (Pediatrics)</option>
+      <option>Dr. Patel (Dentistry)</option>
+      <option>Dr. Kumar (Cardiology)</option>
+    </select>
+    <button type="submit">Confirm Appointment</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer id="contact-info">
+  <p>&copy; 2025 CityCare Hospital. All Rights Reserved.</p>
+</footer>
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "ede84544-4ce9-42aa-9dfc-8f156ace7b80", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "6f398c8d-1330-4791-8a19-28fc2c9e03a0", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>
